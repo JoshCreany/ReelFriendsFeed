@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ReelFriendsFeed.Views.MainPage">
+
+    <RefreshView Command="{Binding GetFeed}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 RefreshColor="Red">
+        <CollectionView x:Name="Feed"
+                        ItemsSource="{Binding Posts}"
+                        Margin="10,10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout  ItemSpacing="5" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="White" BorderColor="Teal" Padding="5" Margin="0,0,0,5" HasShadow="True">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Author}" TextColor="#757575" FontSize="12" FontAttributes="Bold" VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Row="1" Text="{Binding Content}" TextColor="Black" FontSize="8" VerticalOptions="FillAndExpand"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+
+</ContentPage>
