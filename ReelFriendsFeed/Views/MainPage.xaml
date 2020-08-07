@@ -17,6 +17,22 @@
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout  ItemSpacing="5" Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="Username" Placeholder="username"/>
+                    <Entry Grid.Column="1" x:Name="Password" Placeholder="password"/>
+                    <Editor Grid.Row="1" x:Name="PostContent" Placeholder="Write your post here"/>
+                    <Button Grid.Row="1" Grid.Column="1" Text="Post" Clicked="OnButtonClicked"/>
+                </Grid>
+            </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame BackgroundColor="White" BorderColor="Teal" Padding="5" Margin="0,0,0,5" HasShadow="True">
@@ -24,9 +40,11 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Label Text="{Binding Author}" TextColor="#757575" FontSize="12" FontAttributes="Bold" VerticalOptions="FillAndExpand"/>
                             <Label Grid.Row="1" Text="{Binding Content}" TextColor="Black" FontSize="8" VerticalOptions="FillAndExpand"/>
+                            <Image Grid.Row="2" Source="{Binding PhotoURL}" VerticalOptions="FillAndExpand"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>
